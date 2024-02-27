@@ -18,11 +18,12 @@ internal class MenuRegistrarArtista : Menu
         //Artista artista = new Artista(nomeDoArtista, bioDoArtista);
         //artistasRegistrados.Add(nomeDoArtista, artista);
 
-        var ArtistaDAL = new ArtistaDAL();
+        var context = new ScreenSoundContext();
+        var ArtistaDAL = new ArtistaDAL(context);
         ArtistaDAL.Adicionar(new Artista(nomeDoArtista, bioDoArtista));
 
         Console.WriteLine($"O artista {nomeDoArtista} foi registrado com sucesso!");
         Thread.Sleep(4000);
-        Console.Clear();
+        Console.Clear(); 
     }
 }

@@ -12,7 +12,8 @@ namespace ScreenSound.Menus
             base.Executar(musicasRegistradas);
             ExibirTituloDaOpcao("Exibindo todos os artistas registrados na nossa aplicação");
 
-            var artistaDAL = new ArtistaDAL();
+            var context = new ScreenSoundContext();
+            var artistaDAL = new ArtistaDAL(context);
             var listaArtistas = artistaDAL.Listar();
 
             foreach (var artista in listaArtistas)
@@ -27,7 +28,8 @@ namespace ScreenSound.Menus
             var artistaParaRemover = listaArtistas.FirstOrDefault(artista => artista.Nome == nomeArtista);
             if (artistaParaRemover != null)
             {
-                artistaDAL.Remover(artistaParaRemover); // Chamar o método Remover com o objeto Artista
+
+               artistaDAL.Remover(artistaParaRemover); // Chamar o método Remover com o objeto Artista
                 Console.WriteLine("Artista removido com sucesso!");
             }
             else

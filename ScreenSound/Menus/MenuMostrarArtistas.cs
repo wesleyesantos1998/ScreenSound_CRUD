@@ -10,7 +10,10 @@ internal class MenuMostrarArtistas : Menu
         base.Executar(musicasRegistradas);
         ExibirTituloDaOpcao("Exibindo todos os artistas registradas na nossa aplicação");
 
-        var ArtistaDAL = new ArtistaDAL();
+        var context = new ScreenSoundContext();
+        var ArtistaDAL = new ArtistaDAL(context);
+
+       
         var ListaArtista = ArtistaDAL.Listar();
 
         foreach (var artist in ListaArtista)
