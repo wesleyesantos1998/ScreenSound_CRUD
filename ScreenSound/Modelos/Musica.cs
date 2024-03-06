@@ -1,4 +1,6 @@
-﻿namespace ScreenSound.Modelos;
+﻿using ScreenSound.Banco;
+
+namespace ScreenSound.Modelos;
 
 internal class Musica
 {
@@ -12,8 +14,13 @@ internal class Musica
 
     public void ExibirFichaTecnica()
     {
-        Console.WriteLine($"Nome: {Nome}");
-      
+        var context = new ScreenSoundContext();
+        var musicaDAL = new MusicaDAL(context);
+
+        foreach (var artirts in musicaDAL.ListarMusica())
+        {
+            Console.WriteLine($"Nome: {artirts.Nome}");
+        }
     }
 
     public override string ToString()

@@ -2,27 +2,9 @@
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
-//Try Catch, é usado para testar se a operação esta funcional.
-// Abaixo estamos testando se a conexão esta aberta ou não para incluirmos dados ao banco de dados.
-
-/* try
-{
-        
-}
-catch (Exception ex)
-{
-    
-}
-
-return; */
-
-
-Artista ira = new Artista("Ira!", "Banda Ira!");
-Artista beatles = new("The Beatles", "Banda The Beatles");
-
-Dictionary<string, Artista> artistasRegistrados = new();
-artistasRegistrados.Add(ira.Nome, ira);
-artistasRegistrados.Add(beatles.Nome, beatles);
+var context = new ScreenSoundContext();
+var artistaDAL = new ArtistaDAL(context);
+var musicaDAL = new MusicaDAL(context);
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarArtista());
@@ -31,6 +13,8 @@ opcoes.Add(3, new MenuMostrarArtistas());
 opcoes.Add(4, new MenuMostrarMusicas());
 opcoes.Add(5, new RemoverArtista());
 opcoes.Add(6, new AtualizarArtista());
+opcoes.Add(7, new RemoverMusica());
+opcoes.Add(8, new AtualizarMusica());
 opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()
@@ -56,6 +40,8 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite 4 para exibir todas as músicas de um artista");
     Console.WriteLine("Digite 5 para remover um artista");
     Console.WriteLine("Digite 6 para atualizar um artista");
+    Console.WriteLine("Digite 7 para remover uma musica");
+    Console.WriteLine("Digite 8 para atualizar uma musica");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");
@@ -65,7 +51,8 @@ void ExibirOpcoesDoMenu()
     if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
     {
         Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica];
-        menuASerExibido.Executar(artistasRegistrados);
+        menuASerExibido.Executar(artistaDAL);
+        menuASerExibido.Executar(musicaDAL);
         if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
     } 
     else

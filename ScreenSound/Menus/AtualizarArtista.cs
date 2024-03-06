@@ -8,13 +8,14 @@ namespace ScreenSound.Menus
 {
     internal class AtualizarArtista:Menu
     {
-        public override void Executar(Dictionary<string, Artista> artistasRegistrados)
+        public override void Executar(ArtistaDAL artistaDAL)
         {
-            base.Executar(artistasRegistrados);
+            var context = new ScreenSoundContext();
+            //var artistaDAL = new ArtistaDAL(context);
+            base.Executar(artistaDAL);
             ExibirTituloDaOpcao("Exibindo todos os artistas registrados na nossa aplicação");
 
-            var context = new ScreenSoundContext();
-            var artistaDAL = new ArtistaDAL(context);
+            
             var listaArtistas = artistaDAL.Listar();
 
             foreach (var artista in listaArtistas)
@@ -25,7 +26,7 @@ namespace ScreenSound.Menus
             Console.WriteLine("Escolha um artista para estar atualizando o nome: ");
             string nomeArtista = Console.ReadLine()!;
 
-            var AtualizarArtista = listaArtistas.FirstOrDefault(artista => artista.Nome == nomeArtista);
+            var AtualizarArtista = listaArtistas.FirstOrDefault(artista => artista.Nome.Equals(nomeArtista));
             if (AtualizarArtista != null)
             {
                 Console.WriteLine("Artista encontrado com sucesso!\n");

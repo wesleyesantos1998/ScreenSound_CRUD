@@ -7,13 +7,15 @@ namespace ScreenSound.Menus
 {
     internal class RemoverArtista : Menu
     {
-        public override void Executar(Dictionary<string, Artista> musicasRegistradas)
+        public override void Executar(ArtistaDAL artistaDAL)
         {
-            base.Executar(musicasRegistradas);
+            var context = new ScreenSoundContext();
+            //var artistaDAL = new ArtistaDAL(context);
+
+            base.Executar(artistaDAL);
             ExibirTituloDaOpcao("Exibindo todos os artistas registrados na nossa aplicação");
 
-            var context = new ScreenSoundContext();
-            var artistaDAL = new ArtistaDAL(context);
+           
             var listaArtistas = artistaDAL.Listar();
 
             foreach (var artista in listaArtistas)
