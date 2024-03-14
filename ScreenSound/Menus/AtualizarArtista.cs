@@ -26,6 +26,7 @@ namespace ScreenSound.Menus
             Console.WriteLine("Escolha um artista para estar atualizando o nome: ");
             string nomeArtista = Console.ReadLine()!;
 
+            //Lambda para comparar o artista que esta atualizando com o artista que já esta na lista. 
             var AtualizarArtista = listaArtistas.FirstOrDefault(artista => artista.Nome.Equals(nomeArtista));
             if (AtualizarArtista != null)
             {
@@ -36,10 +37,8 @@ namespace ScreenSound.Menus
                 Console.WriteLine("Digite um nova bio: ");
                 string bioArtista= Console.ReadLine()!;
 
-
                 artistaDAL.Remover(AtualizarArtista);
-
-
+                
                 var NovoArtista = new Artista (nomeArtistaa, bioArtista);
 
                 artistaDAL.Atualizar(NovoArtista);

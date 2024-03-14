@@ -5,6 +5,7 @@ namespace ScreenSound.Menus;
 
 internal class MenuMostrarArtistas : Menu
 {
+    //Overrride seria sobrescrevendo o método.
     public override void Executar(ArtistaDAL artistaDAL)
     {
         base.Executar(artistaDAL);

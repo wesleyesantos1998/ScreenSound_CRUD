@@ -13,6 +13,8 @@ internal class Menu
         Console.WriteLine(titulo);
         Console.WriteLine(asteriscos + "\n");
     }
+
+    //Metodo Virtual --> Seria um metodo que pode ser sobrescrito. 
     public virtual void Executar(ArtistaDAL artistaDAL)
     {
         Console.Clear();

@@ -21,7 +21,7 @@ internal class MenuMostrarMusicas : Menu
         var verificaMusicaArtista = musicaDAL.ListarMusica().FirstOrDefault(musica => musica.Nome.Contains(musica.Nome));
         
 
-        if (verificaArtista is not null && verificaMusicaArtista is not null)
+        if (verificaArtista != null && verificaMusicaArtista != null)
         {       
             Console.WriteLine("\nDiscografia:");
             verificaMusicaArtista.ExibirFichaTecnica();

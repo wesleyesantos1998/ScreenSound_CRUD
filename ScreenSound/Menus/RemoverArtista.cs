@@ -27,7 +27,7 @@ namespace ScreenSound.Menus
             string nomeArtista = Console.ReadLine()!;
 
             // Encontrar o artista na lista
-            var artistaParaRemover = listaArtistas.FirstOrDefault(artista => artista.Nome == nomeArtista);
+            var artistaParaRemover = listaArtistas.FirstOrDefault(artista => artista.Nome.Equals(nomeArtista));
             if (artistaParaRemover != null)
             {
 
