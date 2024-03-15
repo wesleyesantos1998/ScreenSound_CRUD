@@ -10,9 +10,13 @@ namespace ScreenSound.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData("Artistas", new string[] { "Nome", "Bio", "FotoPerfil" }, new object[] { "Wesley", "Este caso é muito bom",
-                "www.foto.com.br" });
+            migrationBuilder.InsertData("Artistas", new string[] { "Nome", "Bio", "FotoPerfil" }, new object[] { "JUCA", "Este caso é muito bom","www.foto.com.br" });
+            migrationBuilder.InsertData("Artistas", new string[] { "Nome", "Bio", "FotoPerfil" }, new object[] { "Bruna", "Ela é boua de contabilidade","www.foto.com.br" });
+            migrationBuilder.InsertData("Artistas", new string[] { "Nome", "Bio", "FotoPerfil" }, new object[] { "Wesley", "DEV", "www.foto.com.br" });
+
         }
+
+
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)

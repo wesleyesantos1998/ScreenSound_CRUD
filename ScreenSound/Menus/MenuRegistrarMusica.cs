@@ -31,7 +31,10 @@ internal class MenuRegistrarMusica : Menu
         {
             Console.Write("Agora digite o título da música: ");
             string tituloDaMusica = Console.ReadLine()!;
-            MusicaDAL.Adicionar(new Musica(tituloDaMusica));
+            Console.Write("Agora digite o ano de lançamento: ");
+            string anoLancamentoMusica = Console.ReadLine()!;
+            
+            //MusicaDAL.Adicionar(new Musica(tituloDaMusica, anoLancamentoMusica));
             Console.WriteLine($"A música {tituloDaMusica} de {nomeDoArtista} foi registrada com sucesso!");
             Thread.Sleep(4000);
             Console.Clear();
@@ -43,8 +46,5 @@ internal class MenuRegistrarMusica : Menu
             Console.ReadKey();
             Console.Clear();
         } 
-
-       
-
     }
 }

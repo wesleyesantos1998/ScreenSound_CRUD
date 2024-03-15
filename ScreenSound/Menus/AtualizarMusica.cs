@@ -1,4 +1,5 @@
-﻿using ScreenSound.Banco;
+﻿using Microsoft.Identity.Client;
+using ScreenSound.Banco;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
@@ -21,8 +22,12 @@ internal class AtualizarMusica : Menu
         Console.WriteLine("Escolha uma musica para atualiza-lá: ");
         string nomeMusica = Console.ReadLine()!;
 
+        Console.WriteLine("Escolha um Ano de Lancamento para atualiza-la? ");
+        string AnolancamentoMusica = Console.ReadLine()!;
+
         // Encontrar a musica na lista
         var musicaAtualizar = musicaDAL.ListarMusica().FirstOrDefault(musica => musica.Nome.Equals(nomeMusica));
+        var anoLancamentoAtualizar = musicaDAL.ListarMusica().FirstOrDefault(musica => musica.AnoLancamento.Equals(AnolancamentoMusica));
         if (musicaAtualizar != null)
         {
             
@@ -30,12 +35,15 @@ internal class AtualizarMusica : Menu
 
             Console.WriteLine("Para qual nome você deseja estar atualizando esta musica? ");
             string nomeMusicaNova = Console.ReadLine()!;
+            Console.WriteLine("Para qual nome você deseja estar atualizando este ano de lancamento? ");
+            string anoLancamentoMusicaNova = Console.ReadLine()!;
 
             musicaDAL.Deletar(musicaAtualizar);
+            musicaDAL.Deletar(anoLancamentoAtualizar);
 
-            var novaMusica = new Musica(nomeMusicaNova);
+            //var novaMusica = new Musica(nomeMusicaNova, anoLancamentoMusicaNova);
 
-            musicaDAL.Atualizar(novaMusica);
+            //musicaDAL.Atualizar(novaMusica);
 
             Console.WriteLine("Musica Atualizada com Sucesso!");
 
